@@ -2,5 +2,6 @@ from views import *
 from tornado import web
 
 urls = [
-        (r'/', Hello)
-    ]
+        (r'/reverse/(\w+)', ReverseHandler),
+        (r'/wrap', WrapHandler)
+         ]

@@ -1,7 +1,11 @@
 import tornado.web
 
-class Hello(tornado.web.RequestHandler):
-    def get(self):
-        greetings= self.get_argument('greetings', 'hello')
-        self.write(greetings + ',dewei!')
+class ReverseHandler(tornado.web.RequestHandler):
+    def get(self, input):
+        self.write(input[::-1])
 
+class WrapHandler(tornado.web.RequestHandler):
+    def post(self):
+        text = self.get_argument('text')
+        width =self.get_grgument('width', 40)
+        self.write(textwrap.fill(text, int(width)))
